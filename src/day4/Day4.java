@@ -36,23 +36,32 @@ public class Day4 {
     }
 
     public static Boolean doubleNumberTestV2(String s) {
-        int[] count = new int[10];
-        boolean positive = false;
+        int[] count = new int[10]; //glowny zamysl - wpisuje w te tablice ile razy powtorzyla sie ta cyfra
+        boolean repeat = false;
         for (int i = 0; i < CODE_LENGTH - 1; i++) {
-            int val = Integer.parseInt(String.valueOf(s.charAt(i)));
-            count[val] += 1;
-            if (s.charAt(i) == s.charAt(i + 1)) {
-                positive = true;
-                if (i == CODE_LENGTH - 2) count[val] += 1;
-            } else if (!positive) count[val] -= 1;
+            char current = s.charAt(i);
+            char next = s.charAt(i + 1);
+            int val = Integer.parseInt(String.valueOf(current));
 
+            if (current == next) {
+                repeat = true;
+                count[val] += 1;
+            } else if (repeat) {
+                count[val] += 1;
+                repeat = false;
+            }
+            if (i == CODE_LENGTH - 2 && repeat) {
+                count[val] += 1;
+            }
         }
+
         int repeat2 = 0;
         int repeatMore = 0;
         for (int i = 0; i < 10; i++) {
             if (count[i] == 2) repeat2 = i;
             if (count[i] > 2) repeatMore = i;
         }
-        return repeat2 >= repeatMore;
+        if (repeat2 >= repeatMore && repeat2 != repeatMore) return true;
+        return false;
     }
 }
