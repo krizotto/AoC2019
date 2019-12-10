@@ -1,27 +1,21 @@
 package day5;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class Day5 {
     public static void main(String[] args) {
-        int[] cleanInput = {1002, 12, 2, 3, 1, 1, 2, 3, 1, 3, 4, 3, 1, 5, 0, 3, 2, 6, 1, 19, 1, 19, 5, 23, 2, 10, 23, 27, 2, 27, 13, 31, 1, 10, 31, 35, 1, 35, 9, 39, 2, 39, 13, 43, 1, 43, 5, 47, 1, 47, 6, 51, 2, 6, 51, 55, 1, 5, 55, 59, 2, 9, 59, 63, 2, 6, 63, 67, 1, 13, 67, 71, 1, 9, 71, 75, 2, 13, 75, 79, 1, 79, 10, 83, 2, 83, 9, 87, 1, 5, 87, 91, 2, 91, 6, 95, 2, 13, 95, 99, 1, 99, 5, 103, 1, 103, 2, 107, 1, 107, 10, 0, 99, 2, 0, 14, 0};
+        int[] cleanInput = {3, 225, 1, 225, 6, 6, 1100, 1, 238, 225, 104, 0, 1102, 7, 85, 225, 1102, 67, 12, 225, 102, 36, 65, 224, 1001, 224, -3096, 224, 4, 224, 1002, 223, 8, 223, 101, 4, 224, 224, 1, 224, 223, 223, 1001, 17, 31, 224, 1001, 224, -98, 224, 4, 224, 1002, 223, 8, 223, 101, 5, 224, 224, 1, 223, 224, 223, 1101, 86, 19, 225, 1101, 5, 27, 225, 1102, 18, 37, 225, 2, 125, 74, 224, 1001, 224, -1406, 224, 4, 224, 102, 8, 223, 223, 101, 2, 224, 224, 1, 224, 223, 223, 1102, 13, 47, 225, 1, 99, 14, 224, 1001, 224, -98, 224, 4, 224, 102, 8, 223, 223, 1001, 224, 2, 224, 1, 224, 223, 223, 1101, 38, 88, 225, 1102, 91, 36, 224, 101, -3276, 224, 224, 4, 224, 1002, 223, 8, 223, 101, 3, 224, 224, 1, 224, 223, 223, 1101, 59, 76, 224, 1001, 224, -135, 224, 4, 224, 102, 8, 223, 223, 1001, 224, 6, 224, 1, 223, 224, 223, 101, 90, 195, 224, 1001, 224, -112, 224, 4, 224, 102, 8, 223, 223, 1001, 224, 7, 224, 1, 224, 223, 223, 1102, 22, 28, 225, 1002, 69, 47, 224, 1001, 224, -235, 224, 4, 224, 1002, 223, 8, 223, 101, 5, 224, 224, 1, 223, 224, 223, 4, 223, 99, 0, 0, 0, 677, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1105, 0, 99999, 1105, 227, 247, 1105, 1, 99999, 1005, 227, 99999, 1005, 0, 256, 1105, 1, 99999, 1106, 227, 99999, 1106, 0, 265, 1105, 1, 99999, 1006, 0, 99999, 1006, 227, 274, 1105, 1, 99999, 1105, 1, 280, 1105, 1, 99999, 1, 225, 225, 225, 1101, 294, 0, 0, 105, 1, 0, 1105, 1, 99999, 1106, 0, 300, 1105, 1, 99999, 1, 225, 225, 225, 1101, 314, 0, 0, 106, 0, 0, 1105, 1, 99999, 107, 226, 226, 224, 102, 2, 223, 223, 1006, 224, 329, 1001, 223, 1, 223, 1107, 677, 226, 224, 1002, 223, 2, 223, 1005, 224, 344, 101, 1, 223, 223, 108, 677, 226, 224, 102, 2, 223, 223, 1006, 224, 359, 101, 1, 223, 223, 7, 677, 226, 224, 102, 2, 223, 223, 1005, 224, 374, 101, 1, 223, 223, 1008, 677, 226, 224, 1002, 223, 2, 223, 1006, 224, 389, 1001, 223, 1, 223, 7, 226, 677, 224, 102, 2, 223, 223, 1005, 224, 404, 101, 1, 223, 223, 1007, 226, 226, 224, 102, 2, 223, 223, 1006, 224, 419, 101, 1, 223, 223, 7, 226, 226, 224, 102, 2, 223, 223, 1005, 224, 434, 1001, 223, 1, 223, 8, 226, 226, 224, 1002, 223, 2, 223, 1006, 224, 449, 101, 1, 223, 223, 1007, 677, 677, 224, 102, 2, 223, 223, 1006, 224, 464, 101, 1, 223, 223, 1007, 226, 677, 224, 1002, 223, 2, 223, 1006, 224, 479, 101, 1, 223, 223, 108, 226, 226, 224, 102, 2, 223, 223, 1005, 224, 494, 1001, 223, 1, 223, 1108, 677, 677, 224, 102, 2, 223, 223, 1005, 224, 509, 1001, 223, 1, 223, 107, 226, 677, 224, 1002, 223, 2, 223, 1005, 224, 524, 101, 1, 223, 223, 1108, 677, 226, 224, 1002, 223, 2, 223, 1005, 224, 539, 1001, 223, 1, 223, 1008, 677, 677, 224, 1002, 223, 2, 223, 1006, 224, 554, 101, 1, 223, 223, 1008, 226, 226, 224, 102, 2, 223, 223, 1005, 224, 569, 1001, 223, 1, 223, 8, 677, 226, 224, 102, 2, 223, 223, 1006, 224, 584, 101, 1, 223, 223, 107, 677, 677, 224, 102, 2, 223, 223, 1006, 224, 599, 101, 1, 223, 223, 8, 226, 677, 224, 102, 2, 223, 223, 1006, 224, 614, 101, 1, 223, 223, 1107, 226, 677, 224, 102, 2, 223, 223, 1006, 224, 629, 101, 1, 223, 223, 108, 677, 677, 224, 1002, 223, 2, 223, 1005, 224, 644, 1001, 223, 1, 223, 1107, 226, 226, 224, 102, 2, 223, 223, 1005, 224, 659, 101, 1, 223, 223, 1108, 226, 677, 224, 102, 2, 223, 223, 1005, 224, 674, 101, 1, 223, 223, 4, 223, 99, 226};
 //        int test[]={1,1,1,4,99,5,6,0,99};
 
         List<Integer> input = new ArrayList<>();
+        refreshArray(input, cleanInput);
         final int goal = 19690720;
 
-        for (int noun = 0; noun < 100; noun++) {
-            for (int verb = 0; verb < 100; verb++) {
-                refreshArray(input, cleanInput);
-                input.set(1, noun);
-                input.set(2, verb);
-                func(input);
+        func(input);
+        System.out.println(cleanInput);
 
-                if (input.get(0).equals(goal)) {
-                    System.out.println("Noun: " + noun + "\nVerb: " + verb + "\nAnswer: " + (100 * noun + verb));
-                    break;
-                }
-
-            }
-        }
     }
 
     private static void refreshArray(List<Integer> input, int[] cleanInput) {
@@ -30,76 +24,53 @@ public class Day5 {
     }
 
     private static void func(List<Integer> test) {
-        Iterator<Integer> i = test.iterator();
-
-        while (i.hasNext()) {
-            Integer operation = i.next();
-            Integer currentOpcode = operation % 100;
-            List<String> parameterMode = new ArrayList<>(Arrays.asList(operation.toString().split("")));
-            parameterMode.subList(parameterMode.size() - 2, parameterMode.size()).clear();
-            while (parameterMode.size() < 3) parameterMode.add(0, "0");
+        loop:
+        for (int i = 0; i < test.size(); i++) {
+            Integer element = test.get(i);
+            List<Integer> parameterMode = new ArrayList<>();
+            parameterMode.add(element / 10000);
+            element = element % 10000;
+            parameterMode.add(element / 1000);
+            element = element % 1000;
+            parameterMode.add(element / 100);
+            element = element % 100;
+            Integer opcode = element;
             Collections.reverse(parameterMode);
-            Iterator<String> paramMode = parameterMode.iterator();
-            Integer first = null, second = null, destination = null;
-            String firstMode = "", secondMode = "", destinationMode = "";
-            switch (currentOpcode) {
+            Integer first, second;
+            switch (opcode) {
                 case 99:
-                    break;
+                    break loop;
                 case 1:
-
-                    if (i.hasNext() && paramMode.hasNext()) {
-                        first = i.next();
-                        firstMode = paramMode.next();
-                    }
-                    if (i.hasNext() && paramMode.hasNext()) {
-                        second = i.next();
-                        secondMode = paramMode.next();
-                    }
-                    if (i.hasNext() && paramMode.hasNext()) {
-                        destination = i.next();
-                        destinationMode = paramMode.next();
-                    }
-                    operation1(test, getParameter(test, first, firstMode), getParameter(test, second, secondMode), getParameter(test, destination, destinationMode));
-                case 2:
-                    if (i.hasNext() && paramMode.hasNext()) {
-                        first = i.next();
-                        firstMode = paramMode.next();
-                    }
-                    if (i.hasNext() && paramMode.hasNext()) {
-                        second = i.next();
-                        secondMode = paramMode.next();
-                    }
-                    if (i.hasNext() && paramMode.hasNext()) {
-                        destination = i.next();
-                        destinationMode = paramMode.next();
-                    }
-                    operation2(test, getParameter(test, first, firstMode), getParameter(test, second, secondMode), getParameter(test, destination, destinationMode));
-
+                    first = getParameter(test, i + 1, parameterMode.get(0));
+                    second = getParameter(test, i + 2, parameterMode.get(1));
+                    test.set(getParameter(test, i + 3, 1), first + second);
+                    i += 3;
                     break;
+                case 0:
+                    first = getParameter(test, i + 1, parameterMode.get(0));
+                    second = getParameter(test, i + 2, parameterMode.get(1));
+                    test.set(getParameter(test, i + 3, 1), first * second);
+                    i += 3;
+                    break;
+                case 3:
+                    first = getParameter(test, i + 1, 1);
+                    test.set(first, first);
+                    i += 1;
+                    break;
+                case 4:
+                    first = getParameter(test, i + 1, 1);
+                    System.out.println(test.get(first));
+                    i += 1;
+                    break loop;
                 default:
-                    throw new IllegalStateException("Unexpected value: " + currentOpcode);
+                    throw new IllegalStateException("Unexpected value: " + opcode);
             }
-
         }
     }
 
-
-
-    private static Integer getParameter(List<Integer> test, Integer it, String mode) {
-        if (mode == "0") return test.get(it);
-        if (mode == "1") return it;
+    private static Integer getParameter(List<Integer> test, int i, Integer mode) {
+        if (mode.equals(0)) return test.get(test.get(i));
+        else if (mode.equals(1)) return test.get(i);
         return null;
-    }
-
-    private static void operation1(List<Integer> test, Integer param1, Integer param2, Integer dest) {
-        int eq;
-        eq = param1 + param2;
-        test.set(dest, eq);
-    }
-    private static void operation2(List<Integer> test, Integer param1, Integer param2, Integer dest) {
-        int eq = 1;
-        eq = param1 * param2;
-        test.set(dest, eq);
-
     }
 }
